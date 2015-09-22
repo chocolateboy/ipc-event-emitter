@@ -18,7 +18,7 @@ describe('ipc-event-emitter', () => {
         called = [];
     });
 
-    it('emits events', async function (done) {
+    it('emits events', async function () {
         this.slow(1000);
 
         let ipc = child('emit');
@@ -42,10 +42,9 @@ describe('ipc-event-emitter', () => {
 
         assert.deepEqual(called, [ 'pre-ready' ]);
         ipc.process.disconnect();
-        done();
     });
 
-    it('fixes events', async function (done) {
+    it('fixes events', async function () {
         this.slow(1000);
 
         let ipc = child('fix');
@@ -70,6 +69,5 @@ describe('ipc-event-emitter', () => {
 
         assert.deepEqual(called, [ 'pre-ready', 'post-ready' ]);
         ipc.process.disconnect();
-        done();
     });
 });

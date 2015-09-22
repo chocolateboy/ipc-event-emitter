@@ -32,7 +32,7 @@ module.exports = function (grunt) {
         clean: [ 'target' ],
         mochaTest: {
             options: {
-                timeout: 4000
+                timeout: 5000
             },
             test: {
                 src: [
