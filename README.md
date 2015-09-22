@@ -1,5 +1,8 @@
 # ipc-event-emitter
 
+[![npm status](http://img.shields.io/npm/v/ipc-event-emitter.svg)](https://www.npmjs.org/package/ipc-event-emitter)
+[![build status](https://secure.travis-ci.org/chocolateboy/ipc-event-emitter.svg)](http://travis-ci.org/chocolateboy/ipc-event-emitter)
+
 An EventEmitter wrapper for child processes with support for states (AKA fixed events) and logging
 
 - [INSTALLATION](#installation)
