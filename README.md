@@ -83,10 +83,16 @@ to code which expects a standard EventEmitter e.g. an event logging library such
 
 ### IPC
 
-**Signature**: options: Object? -> EventEmitter
+```javascript
+let ipc = IPC(process, { debug: true });
 
-Returns an EventEmitter instance which translates `emit` calls to the `send` protocol used for
-IPC between parent and child processes.
+await ipc.emit('start');
+```
+
+**Signature**: (process: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html), options: Object?) -> EventEmitter
+
+Takes a process or child\_process and an optional options object and returns an EventEmitter instance which translates
+`emit` calls to the `send` protocol used for IPC between parent and child processes.
 
 Otherwise, the wrapper has the same interface and the same behaviour as its base class,
 [events.EventEmitter](https://nodejs.org/api/events.html), apart from the differences
