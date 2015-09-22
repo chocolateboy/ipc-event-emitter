@@ -1,6 +1,13 @@
+**0.1.0** - 2015-09-22 18:33:16
+
+* `emit` and `fix` now return promises
+* make test less error-prone on Node.js v4.0.0
+* fix emit-logger integration
+* add a timeout option
+
 **0.0.4** - 2015-09-22 14:58:38
 
-* docfix: add emit to the TOC
+* docfix: add `emit` to the TOC
 
 **0.0.3** - 2015-09-22 14:49:01
 

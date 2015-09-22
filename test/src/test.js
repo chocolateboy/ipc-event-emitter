@@ -3,12 +3,13 @@ import ChildProcess     from 'child_process';
 import { EventEmitter } from 'events';
 import IPC              from '../../src/ipc-event-emitter';
 import Promise          from 'bluebird';
+import semver           from 'semver';
 
-const SLEEP = 100;
+const SLEEP = semver.gt(process.version, '4.0.0') ? 500 : 100;
 
-function child (...args) {
-    let child = ChildProcess.fork('./target/test/src/child.js', args);
-    return IPC(child);
+function child (method, options = {}) {
+    let child = ChildProcess.fork('./target/test/src/child.js', [ method ]);
+    return IPC(child, options);
 }
 
 describe('ipc-event-emitter', () => {
@@ -19,7 +20,7 @@ describe('ipc-event-emitter', () => {
     });
 
     it('emits events', async function () {
-        this.slow(1000);
+        this.slow(2000);
 
         let ipc = child('emit');
 
@@ -29,9 +30,7 @@ describe('ipc-event-emitter', () => {
         });
 
         await Promise.delay(SLEEP);
-
-        ipc.emit('start');
-
+        await ipc.emit('start');
         await Promise.delay(SLEEP);
 
         ipc.on('ready', () => {
@@ -45,7 +44,7 @@ describe('ipc-event-emitter', () => {
     });
 
     it('fixes events', async function () {
-        this.slow(1000);
+        this.slow(2000);
 
         let ipc = child('fix');
 
@@ -55,9 +54,7 @@ describe('ipc-event-emitter', () => {
         });
 
         await Promise.delay(SLEEP);
-
-        ipc.emit('start');
-
+        await ipc.emit('start');
         await Promise.delay(SLEEP);
 
         ipc.on('ready', function () {

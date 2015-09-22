@@ -1,5 +1,7 @@
 import _                from 'lodash';
 import { EventEmitter } from 'events';
+import Promise          from 'bluebird';
+import semver           from 'semver';
 
 const TYPE = 'ipc-event-emitter';
 
@@ -7,11 +9,15 @@ const OPTIONS = {
     debug: process.env.IPC_EVENT_EMITTER_DEBUG
 };
 
+const NODE_GT_4 = semver.gt(process.version, '4.0.0');
+const SEND_OR_DELIVER = NODE_GT_4 ? 'send' : 'deliver';
+
 export class IPCEventEmitter extends EventEmitter {
     constructor ($process, $options = {}) {
         super();
         this.process = $process;
         this._fixed = {};
+        this._timeout = $options.timeout;
 
         $process.on('message', data => {
             if (data.type && data.type === TYPE) {
@@ -25,22 +31,53 @@ export class IPCEventEmitter extends EventEmitter {
         if (options.debug) {
             let EmitLogger = require('emit-logger');
             let name = options.name || process.pid;
-            let logger = new EmitLogger(name, { name });
+            let logger = new EmitLogger();
 
-            logger.add($process);
+            logger.add($process, { name });
         }
     }
 
     emit (...args) {
-        this.process.send({ type: TYPE, emit: args });
+        return this._sendAsync({ type: TYPE, emit: args });
     }
 
     fix (name, ...args) {
-        this.process.send({
+        return this._sendAsync({
             type: TYPE,
             fixed: { [name]: args },
             emit: [ name, ...args ],
         });
+    }
+
+    _sendAsync (message) {
+        let promise;
+
+        if (NODE_GT_4) {
+            promise = Promise.fromNode(callback => {
+                this.process.send(message, callback);
+            });
+        } else {
+            promise = new Promise((resolve, reject) => {
+                process.nextTick(() => {
+                    try {
+                        resolve(this.process.send(message));
+                    } catch (e) {
+                        reject(e);
+                    }
+                });
+            });
+        }
+
+        let timeout = this._timeout;
+
+        if (_.isNumber(timeout)) {
+            return promise.timeout(
+                timeout,
+                `IPC message took > ${timeout} ms to ${SEND_OR_DELIVER}`
+            );
+        } else {
+            return promise;
+        }
     }
 
     addListener (name, listener, method = 'addListener') {
