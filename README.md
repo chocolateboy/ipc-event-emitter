@@ -119,9 +119,9 @@ The following options are available:
 
 Emit an IPC message i.e. send a message from a parent process to a child process or vice versa.
 
-The only difference between this method and the standard
+Apart from the fact that it performs IPC, the only difference between this method and the standard
 [`EventEmitter.emit`](https://nodejs.org/api/events.html#events_emitter_emit_event_arg1_arg2)
-— apart from the fact that it performs IPC — is that this method doesn't return a (boolean) value.
+is that this method doesn't return a (boolean) value.
 
 ### fix
 
