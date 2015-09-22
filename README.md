@@ -88,8 +88,8 @@ Returns an EventEmitter instance which translates `emit` calls to the `send` pro
 IPC between parent and child processes.
 
 Otherwise, the wrapper has the same interface and the same behaviour as its base class,
-[events.EventEmitter](https://nodejs.org/api/events.html), apart from the additions listed
-[below](#methods).
+[events.EventEmitter](https://nodejs.org/api/events.html), apart from the differences
+listed [below](#methods).
 
 The following options are available:
 
@@ -112,6 +112,16 @@ The following options are available:
     it defaults to the process's PID.
 
 ## METHODS
+
+### emit
+
+**Signature**: event: string, args: ...Any -> None
+
+Emit an IPC message i.e. send a message from a parent process to a child process or vice versa.
+
+The only difference between this method and the standard
+[`EventEmitter.emit`](https://nodejs.org/api/events.html#events_emitter_emit_event_arg1_arg2)
+— apart from the fact that it performs IPC — is that this method doesn't return a (boolean) value.
 
 ### fix
 
