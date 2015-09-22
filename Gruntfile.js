@@ -31,6 +31,9 @@ module.exports = function (grunt) {
         },
         clean: [ 'target' ],
         mochaTest: {
+            options: {
+                timeout: 4000
+            },
             test: {
                 src: [
                     'target/test/**/*.js',
