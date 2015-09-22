@@ -13,6 +13,7 @@ An EventEmitter wrapper for child processes with support for states (AKA fixed e
 - [EXPORTS](#exports)
   - [IPC](#ipc)
 - [METHODS](#methods)
+  - [emit](#emit)
   - [fix](#fix)
 - [SEE ALSO](#see-also)
 - [VERSION](#version)
@@ -141,7 +142,7 @@ for states such as "ready" which are poorly modeled by events.
 
 ## VERSION
 
-0.0.3
+0.0.4
 
 ## AUTHOR
 
