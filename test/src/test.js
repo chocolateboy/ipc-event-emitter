@@ -3,9 +3,8 @@ import ChildProcess     from 'child_process';
 import { EventEmitter } from 'events';
 import IPC              from '../../src/ipc-event-emitter';
 import Promise          from 'bluebird';
-import semver           from 'semver';
 
-const SLEEP = semver.gt(process.version, '4.0.0') ? 500 : 100;
+const SLEEP = 500;
 
 function child (method, options = {}) {
     let child = ChildProcess.fork('./target/test/src/child.js', [ method ]);
