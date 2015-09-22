@@ -141,7 +141,7 @@ for states such as "ready" which are poorly modeled by events.
 
 ## VERSION
 
-0.0.2
+0.0.3
 
 ## AUTHOR
 

@@ -1,8 +1,7 @@
 {
   "name": "ipc-event-emitter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An EventEmitter wrapper for child processes with support for states (AKA fixed events) and logging",
-  "repository": "chocolateboy/ipc-event-emitter",
   "main": "target/src/ipc-event-emitter.js",
   "scripts": {
     "test": "grunt test"
@@ -13,6 +12,14 @@
     "CHANGELOG.md",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chocolateboy/ipc-event-emitter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chocolateboy/ipc-event-emitter/issues"
+  },
+  "homepage": "https://github.com/chocolateboy/ipc-event-emitter#readme",
   "keywords": [
     "child_process",
     "child-process",
