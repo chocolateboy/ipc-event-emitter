@@ -89,7 +89,7 @@ let ipc = IPC(process, { debug: true });
 await ipc.emit('start');
 ```
 
-**Signature**: (process: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html), options: Object?) -> EventEmitter
+**Signature**: (process: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html), options: Object?) → EventEmitter
 
 Takes a process or child\_process and an optional options object and returns an EventEmitter instance which translates
 `emit` calls to the `send` protocol used for IPC between parent and child processes.
@@ -142,7 +142,7 @@ ipc.emit('start').then(() => {
 });
 ```
 
-**Signature**: event: string, args: ...Any -> Promise
+**Signature**: event: string, args: ...Any → Promise
 
 Emit an IPC message i.e. send a message from a parent process to a child process or vice versa.
 
@@ -169,7 +169,7 @@ ipc.fix('ready').then(() => {
 });
 ```
 
-**Signature**: event: string, args: ...Any -> Promise
+**Signature**: event: string, args: ...Any → Promise
 
 A "sticky" version of [`emit`](#emit). Listeners registered before this event are notified in
 the same way as `emit`. Listeners registered after this event are called immediately with the
@@ -187,7 +187,7 @@ As with `emit`, the value resolved by the returned promise is unspecified.
 
 ## VERSION
 
-0.1.0
+0.1.1
 
 ## AUTHOR
 

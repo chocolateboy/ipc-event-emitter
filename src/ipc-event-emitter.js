@@ -9,8 +9,8 @@ const OPTIONS = {
     debug: process.env.IPC_EVENT_EMITTER_DEBUG
 };
 
-const NODE_GT_4 = semver.gt(process.version, '4.0.0');
-const SEND_OR_DELIVER = NODE_GT_4 ? 'send' : 'deliver';
+const NODE_GE_4 = semver.gte(process.version, '4.0.0');
+const SEND_OR_DELIVER = NODE_GE_4 ? 'send' : 'deliver';
 
 export class IPCEventEmitter extends EventEmitter {
     constructor ($process, $options = {}) {
@@ -52,7 +52,7 @@ export class IPCEventEmitter extends EventEmitter {
     _sendAsync (message) {
         let promise;
 
-        if (NODE_GT_4) {
+        if (NODE_GE_4) {
             promise = Promise.fromNode(callback => {
                 this.process.send(message, callback);
             });
