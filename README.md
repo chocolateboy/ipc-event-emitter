@@ -29,36 +29,36 @@ An EventEmitter wrapper for child processes with support for states (AKA fixed e
 #### parent
 
 ```javascript
-import { fork } from 'child_process';
-import IPC      from 'ipc-event-emitter';
+import { fork } from 'child_process'
+import IPC      from 'ipc-event-emitter'
 
-let child = fork('./child.js');
-let ipc = IPC(child);
+let child = fork('./child.js')
+let ipc = IPC(child)
 
 ipc.on('ready', () => {
-    console.log('got "ready", sending "ping"');
-    ipc.emit('ping');
-});
+    console.log('got "ready", sending "ping"')
+    ipc.emit('ping')
+})
 
 ipc.on('pong', () => {
-    console.log('got "pong", disconnecting');
-    child.disconnect();
-});
+    console.log('got "pong", disconnecting')
+    child.disconnect()
+})
 ```
 
 #### child
 
 ```javascript
-import IPC from 'ipc-event-emitter';
+import IPC from 'ipc-event-emitter'
 
-let ipc = IPC(process);
+let ipc = IPC(process)
 
 ipc.on('ping', () => {
-    console.log('got "ping", sending "pong"');
-    ipc.emit('pong');
-});
+    console.log('got "ping", sending "pong"')
+    ipc.emit('pong')
+})
 
-ipc.fix('ready');
+ipc.fix('ready')
 ```
 
 #### output
@@ -84,9 +84,9 @@ to code which expects a standard EventEmitter e.g. an event logging library such
 ### IPC
 
 ```javascript
-let ipc = IPC(process, { debug: true });
+let ipc = IPC(process, { debug: true })
 
-await ipc.emit('start');
+await ipc.emit('start')
 ```
 
 **Signature**: (process: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html), options: Object?) → EventEmitter
@@ -133,13 +133,13 @@ The following options are available:
 ### emit
 
 ```javascript
-ipc.emit('start');
+ipc.emit('start')
 
 // or
 
 ipc.emit('start').then(() => {
-    console.log('emitted start');
-});
+    console.log('emitted start')
+})
 ```
 
 **Signature**: event: string, args: ...Any → Promise
@@ -160,13 +160,13 @@ The value resolved by the returned promise is unspecified.
 ### fix
 
 ```javascript
-ipc.fix('ready');
+ipc.fix('ready')
 
 // or
 
 ipc.fix('ready').then(() => {
-    console.log('fixed ready state');
-});
+    console.log('fixed ready state')
+})
 ```
 
 **Signature**: event: string, args: ...Any → Promise
