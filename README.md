@@ -69,15 +69,20 @@ ipc.fix('ready')
 
 ## DESCRIPTION
 
-This module provides an [EventEmitter](https://nodejs.org/api/events.html) wrapper for child processes, which
-eliminates the need to use the
+This module provides an [EventEmitter](https://nodejs.org/api/events.html) wrapper for
+child processes, which eliminates the need to use the
 [`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_callback)
 method to pass values back and forth between parent and child processes.
 
 Instead, values are transparently passed between processes with the standard `emit` method.
-Exposing inter-process communication through the standard EventEmitter API makes it easy to pass the wrapper
-to code which expects a standard EventEmitter e.g. an event logging library such as
-[emit-logger](https://www.npmjs.com/package/emit-logger) works as expected.
+Exposing inter-process communication through the standard EventEmitter API makes it easy to
+pass the wrapper to code which expects a standard EventEmitter e.g. an event logging library
+such as [emit-logger](https://www.npmjs.com/package/emit-logger) works as expected.
+
+In addition, this module extends the EventEmitter API to include support for "sticky"
+events i.e. events that can be subscribed to *after* they've fired. This ensures events
+are safely delivered regardless of when listeners are registered, and eliminates a common
+source of buggy and unpredictable behaviour when co-ordinating communicating processes.
 
 ## EXPORTS
 
@@ -126,7 +131,7 @@ The following options are available:
     or send (>= 4.0.0), the promise returned by [`emit`](#emit) or [`fix`](#fix) is rejected. The default value is
     `undefined` i.e. no time limit.
 
-    Note that it is up to you to perform any cleanup (e.g. disconnecting the relevant process) if a message times out.
+    Note that it's up to you to perform any cleanup (e.g. disconnecting the relevant process) if a message times out.
 
 ## METHODS
 
