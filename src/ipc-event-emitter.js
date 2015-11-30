@@ -3,14 +3,11 @@ import { EventEmitter } from 'events';
 import Promise          from 'bluebird';
 import semver           from 'semver';
 
-const TYPE = 'ipc-event-emitter';
-
-const OPTIONS = {
-    debug: process.env.IPC_EVENT_EMITTER_DEBUG
-};
-
+const DEBUG = process.env.IPC_EVENT_EMITTER_DEBUG == true;
 const NODE_GE_4 = semver.gte(process.version, '4.0.0');
+const OPTIONS = { debug: DEBUG };
 const SEND_OR_DELIVER = NODE_GE_4 ? 'send' : 'deliver';
+const TYPE = 'ipc-event-emitter';
 
 export class IPCEventEmitter extends EventEmitter {
     constructor ($process, $options = {}) {
