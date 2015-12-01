@@ -15,7 +15,7 @@ export class IPCEventEmitter extends EventEmitter {
 
         this.process = $process
         this._fixed = {}
-        this._timeout = $options.timeout | 0
+        this._timeout = $options.timeout
 
         $process.on('message', data => {
             if (data.type && data.type === TYPE) {

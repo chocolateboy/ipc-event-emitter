@@ -184,7 +184,7 @@ As with `emit`, the value resolved by the returned promise is unspecified.
 
 ## VERSION
 
-0.1.1
+1.0.0
 
 ## AUTHOR
 

@@ -1,3 +1,7 @@
+**1.0.0** - 2015-12-01 22:39:02
+
+* fix boolean casting of the `IPC_EVENT_EMITTER_DEBUG` environment variable
+
 **0.1.1** - 2015-10-23 09:58:42
 
 * fix Node.js v4.x matching: Node.js > 4.0.0 -> Node.js >= 4.0.0

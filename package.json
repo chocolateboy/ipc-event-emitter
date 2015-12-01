@@ -1,6 +1,6 @@
 {
   "name": "ipc-event-emitter",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "An EventEmitter wrapper for child processes with support for states (AKA fixed events) and logging",
   "main": "target/src/ipc-event-emitter.js",
   "scripts": {
