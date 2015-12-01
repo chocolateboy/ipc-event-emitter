@@ -75,7 +75,7 @@ This module provides an [`EventEmitter`](https://nodejs.org/api/events.html) wra
 
 Instead, values are passed between processes with the standard `emit` method. Exposing inter-process communication through the standard `EventEmitter` API makes it easy to pass the wrapper to code which expects a standard event emitter e.g. an event logging library such as [emit-logger](https://www.npmjs.com/package/emit-logger) works as expected.
 
-In addition, this module extends the `EventEmitter` API to include support for states i.e. "sticky" events that can be subscribed to *after* they've fired. This ensures events are safely delivered regardless of when listeners are registered, and eliminates a common source of buggy and unpredictable behaviour when coordinating communicating processes.
+In addition, the wrapper extends the `EventEmitter` API to include support for states i.e. "sticky" events that can be subscribed to *after* they've fired. This ensures events are safely delivered regardless of when listeners are registered, and eliminates a common source of buggy and unpredictable behaviour when coordinating communicating processes.
 
 ## EXPORTS
 
