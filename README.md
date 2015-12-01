@@ -12,6 +12,8 @@ An EventEmitter wrapper for child processes with support for states (AKA fixed e
 - [DESCRIPTION](#description)
 - [EXPORTS](#exports)
   - [IPC](#ipc)
+- [PROPERTIES](#properties)
+  - [process](#process)
 - [METHODS](#methods)
   - [emit](#emit)
   - [fix](#fix)
@@ -74,15 +76,15 @@ child processes, which eliminates the need to use the
 [`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_callback)
 method to pass values back and forth between parent and child processes.
 
-Instead, values are transparently passed between processes with the standard `emit` method.
+Instead, values are passed between processes with the standard `emit` method.
 Exposing inter-process communication through the standard EventEmitter API makes it easy to
 pass the wrapper to code which expects a standard EventEmitter e.g. an event logging library
 such as [emit-logger](https://www.npmjs.com/package/emit-logger) works as expected.
 
-In addition, this module extends the EventEmitter API to include support for "sticky"
-events i.e. events that can be subscribed to *after* they've fired. This ensures events
+In addition, this module extends the EventEmitter API to include support for states i.e.
+"sticky" events that can be subscribed to *after* they've fired. This ensures events
 are safely delivered regardless of when listeners are registered, and eliminates a common
-source of buggy and unpredictable behaviour when co-ordinating communicating processes.
+source of buggy and unpredictable behaviour when coordinating communicating processes.
 
 ## EXPORTS
 
@@ -132,6 +134,22 @@ The following options are available:
     `undefined` i.e. no time limit.
 
     Note that it's up to you to perform any cleanup (e.g. disconnecting the relevant process) if a message times out.
+
+## PROPERTIES
+
+### process
+
+```javascript
+let ipc = IPC(fork('./child.js'))
+
+ipc.on('complete', () => {
+    ipc.process.disconnect()
+})
+```
+
+**Type**: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html)
+
+The process or child\_process supplied to the [IPC](#ipc) call.
 
 ## METHODS
 
