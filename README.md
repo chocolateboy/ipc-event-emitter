@@ -151,7 +151,9 @@ ipc.emit('start').then(() => {
 
 Emit an IPC event i.e. send a message from a parent process to a child process or vice versa.
 
-The return value is a promise. This is intended to provide a way to smooth over the differences between Node.js < v4.0.0, where `process.send` (and thus `emit` and `fix`) is synchronous, and Node.js >= v4.0.0, where it's asynchronous. Note that on Node.js >= v4.0.0, the promise is resolved when the message has been *sent*, whereas on older versions it's resolved when the message has been *received*. As a result, only the former guarantee should be relied upon unless the target environment is known to be locked down to 0.x.
+The return value is a promise. This is intended to provide a way to smooth over the differences between Node.js < v4.0.0, where `process.send` (and thus `emit` and `fix`) is synchronous, and Node.js >= v4.0.0, where it's asynchronous.
+
+Note that on Node.js >= v4.0.0, the promise is resolved when the message has been *sent*, whereas on older versions it's resolved when the message has been *received*. As a result, only the former guarantee should be relied upon unless the target environment is known to be locked down to 0.x.
 
 The value resolved by the returned promise is unspecified.
 
