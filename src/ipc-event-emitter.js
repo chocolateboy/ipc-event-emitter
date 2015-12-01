@@ -12,9 +12,10 @@ const TYPE = 'ipc-event-emitter'
 export class IPCEventEmitter extends EventEmitter {
     constructor ($process, $options = {}) {
         super()
+
         this.process = $process
         this._fixed = {}
-        this._timeout = $options.timeout
+        this._timeout = $options.timeout | 0
 
         $process.on('message', data => {
             if (data.type && data.type === TYPE) {
