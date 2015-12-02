@@ -1,3 +1,7 @@
+**1.0.1** - TBD
+
+* improve env-var boolification
+
 **1.0.0** - 2015-12-01 22:39:02
 
 * fix boolean casting of the `IPC_EVENT_EMITTER_DEBUG` environment variable

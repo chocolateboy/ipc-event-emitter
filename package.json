@@ -44,6 +44,7 @@
   "dependencies": {
     "babel-runtime": "^5.8.25",
     "bluebird": "^2.10.2",
+    "boolify-string": "^2.0.2",
     "emit-logger": "chocolateboy/emit-logger#better-emitter-name",
     "lodash": "^3.10.1",
     "semver": "^5.0.3",

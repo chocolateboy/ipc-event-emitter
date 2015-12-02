@@ -2,8 +2,9 @@ import _                from 'lodash'
 import { EventEmitter } from 'events'
 import Promise          from 'bluebird'
 import semver           from 'semver'
+import str2bool         from 'boolify-string'
 
-const DEBUG = process.env.IPC_EVENT_EMITTER_DEBUG == true
+const DEBUG = str2bool(process.env.IPC_EVENT_EMITTER_DEBUG)
 const NODE_GE_4 = semver.gte(process.version, '4.0.0')
 const OPTIONS = { debug: DEBUG }
 const SEND_OR_DELIVER = NODE_GE_4 ? 'send' : 'deliver'
