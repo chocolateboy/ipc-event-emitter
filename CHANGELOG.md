@@ -1,6 +1,13 @@
-**1.0.1** - TBD
+**2.0.0** - TBD
 
+* **Breaking change**: rename `fix` -> `pin`
+* add `unpin` method to remove pinned events
 * improve env-var boolification
+* disable pinning "error" events
+* package.json: require Node.js >= v0.5.9 for Process.send/ChildProcess.send
+* document the non-default export, IPCEventEmitter
+* more tests
+* doc tweaks
 
 **1.0.0** - 2015-12-01 22:39:02
 

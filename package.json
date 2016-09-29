@@ -1,10 +1,11 @@
 {
   "name": "ipc-event-emitter",
   "version": "1.0.0",
-  "description": "An EventEmitter wrapper for child processes with support for states (AKA fixed events) and logging",
+  "description": "An EventEmitter wrapper for IPC between parent and child processes with support for states (AKA pinned events) and logging",
   "main": "target/src/ipc-event-emitter.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "example": "grunt example"
   },
   "files": [
     "target/src/ipc-event-emitter.js",
@@ -12,6 +13,9 @@
     "CHANGELOG.md",
     "README.md"
   ],
+  "engines": {
+    "node": ">= 0.5.9"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chocolateboy/ipc-event-emitter.git"
@@ -21,22 +25,24 @@
   },
   "homepage": "https://github.com/chocolateboy/ipc-event-emitter#readme",
   "keywords": [
+    "childprocess",
     "child_process",
     "child-process",
     "event",
-    "events",
     "event-emitter",
     "eventemitter",
-    "fix",
-    "fixed",
+    "events",
     "fork",
     "ipc",
+    "pin",
+    "pinned",
     "process",
+    "processes",
     "ready",
     "spawn",
     "state",
-    "states",
     "stateful",
+    "states",
     "sticky"
   ],
   "author": "chocolateboy",

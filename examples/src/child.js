@@ -1,10 +1,10 @@
-import IPC from '../../src/ipc-event-emitter.js';
+import IPC from '../../src/ipc-event-emitter'
 
-let ipc = IPC(process);
+let ipc = IPC(process)
 
 ipc.on('ping', () => {
-    console.log('got "ping", sending "pong"');
-    ipc.emit('pong');
-});
+    console.log('got "ping", sending "pong"')
+    ipc.emit('pong')
+})
 
-ipc.fix('ready');
+ipc.pin('ready')
