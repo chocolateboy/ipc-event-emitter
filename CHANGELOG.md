@@ -1,4 +1,4 @@
-**2.0.0** - TBD
+**2.0.0** - 2017-01-22 19:00:42
 
 * **Breaking change**: rename `fix` -> `pin`
 * add `unpin` method to remove pinned events

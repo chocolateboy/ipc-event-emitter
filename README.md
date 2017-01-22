@@ -245,7 +245,7 @@ Returns a promise with the same behaviour as `emit`. As with `emit`, the value r
 
 ## VERSION
 
-1.0.0
+2.0.0
 
 ## AUTHOR
 
