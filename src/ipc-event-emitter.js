@@ -59,18 +59,16 @@ export class IPCEventEmitter extends EventEmitter {
         //
         // emit e.g. { emit: [ 'downloaded', 'http://example.com/file.txt' ] }
         //
-        //     fire the emit event (e.g. `downloaded`) in the target
+        //     emit the specified event (e.g. `downloaded`) in the target
         $process.on('message', data => {
             if (data && data.type === TYPE) {
                 if (data.unpin) {
                     delete this._pinned[data.unpin]
                 } else {
                     // XXX make sure we pin before we emit
-                    // in case a listener registers another
-                    // listener for this event while it's
-                    // executing.
-                    //
-                    // TODO test this
+                    // in case e.g. listener 1 registers
+                    // listener 2 for this event while listener
+                    // 1 is running (TODO test this).
                     if (data.pin) {
                         let [ name, ...args ] = data.emit
                         this._pinned[name] = args
@@ -92,9 +90,9 @@ export class IPCEventEmitter extends EventEmitter {
         }
     }
 
-    // emit an event in the same way as `emit`, but emit
-    // it in the IPC wrapper in the process at the other
-    // end of the IPC channel
+    // emit an event in the same way as `EventEmitter.emit`,
+    // but emit it in the IPC wrapper in the process at the
+    // other end of the IPC channel
     emit (...args) {
         return this._sendAsync({ emit: args })
     }
@@ -164,10 +162,11 @@ export class IPCEventEmitter extends EventEmitter {
     // `prependOnceListener`) we either a) fire them once
     // and forget them if the event is pinned (i.e. no
     // need to register them) or b) register them as usual
-    // with super.once(...) or super.prependOnceListener(...).
-    // To support this, the method to delegate to in
-    // the not-pinned case can be passed as an optional
-    // third parameter.
+    // with super.once(...) or super.prependOnceListener(...)
+    // if the event isn't pinned.
+    //
+    // to support the latter case, the name of the method
+    // to delegate to is passed as the third parameter.
     _invokeIfPinned (name, listener, delegate) {
         let pinned = this._pinned[name]
 

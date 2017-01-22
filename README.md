@@ -74,7 +74,7 @@ ipc.pin('ready')
 
 ## DESCRIPTION
 
-This module provides an [`EventEmitter`](https://nodejs.org/api/events.html) wrapper for child/parent processes which eliminates the need to use the [`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_callback) and [`process.send`](https://nodejs.org/api/process.html#process_process_send_message_sendhandle_options_callback) methods for [IPC](https://en.wikipedia.org/wiki/Inter-process_communication).
+This module provides an [`EventEmitter`](https://nodejs.org/api/events.html) wrapper for child/parent processes which eliminates the need to use the [`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_options_callback) and [`process.send`](https://nodejs.org/api/process.html#process_process_send_message_sendhandle_options_callback) methods for [IPC](https://en.wikipedia.org/wiki/Inter-process_communication).
 
 Instead, messages are sent to the connected process via the standard `emit` method. Exposing inter-process communication through the `EventEmitter` API makes it easy to pass the wrapper to code which expects a standard event emitter.
 
@@ -98,7 +98,7 @@ Takes a process or child process and an optional options object and returns an e
 
 Events are fired remotely (i.e. in the IPC wrapper in the connected process) and listeners are registered locally i.e. in the IPC wrapper in the current process.
 
-Otherwise, the wrapper has the same interface and the same behaviour as its base class, [`events.EventEmitter`](https://nodejs.org/api/events.html), apart from the differences listed [below](#methods).
+Otherwise, the wrapper has the same interface and the same behaviour as its base class, [`events.EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter), apart from the differences listed [below](#methods).
 
 #### Options
 
@@ -170,7 +170,7 @@ ipc.on('complete', () => {
 
 **Type**: [Process](https://nodejs.org/api/process.html) | [ChildProcess](https://nodejs.org/api/child_process.html)
 
-The process or child process supplied to the [`IPC`](#ipc) call.
+The process or child process supplied to the [`IPC`](#ipc-default) call.
 
 ## METHODS
 
@@ -232,7 +232,7 @@ ipc.unpin('ready').then(() => {
 
 **Signature**: event: string → Promise
 
-Unregister a "sticky" event. The behaviour prior to the pinning of the event is restored i.e. listeners registered after an event has been unpinned will only be fired if the event occurs again in the future.
+Unregister a "sticky" event. The behaviour prior to the pinning of the event is restored i.e. listeners registered after an event has been unpinned will only be invoked if the event occurs again in the future.
 
 Returns a promise with the same behaviour as `emit`. As with `emit`, the value resolved by the promise is unspecified.
 

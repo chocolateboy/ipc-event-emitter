@@ -37,7 +37,7 @@ function assertIsIpcEventEmitter (value, name = '`this`') {
     )
 }
 
-// register listeners after an event has been pinned, then re-emit or
+// register listeners after an event has been pinned, then emit or
 // re-pin the event and confirm that the `on` listener is called again,
 // and that the `once` listeners aren't called again
 async function assertOnceOK (event, want) {
