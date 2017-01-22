@@ -83,7 +83,7 @@ export class IPCEventEmitter extends EventEmitter {
 
         if (options.debug) {
             let EmitLogger = require('emit-logger')
-            let name = options.name || process.pid
+            let name = options.name || $process.pid
             let logger = new EmitLogger()
 
             logger.add($process, { name })
