@@ -34,7 +34,7 @@ gulp.task('mocha', () => {
 })
 
 function runExample () {
-    return exec.stdout('node', [ './target/examples/src/parent.js' ])
+    return exec.stdout('node', [ `./${DEST}/examples/src/parent.js` ])
         .then(::console.log)
 }
 
