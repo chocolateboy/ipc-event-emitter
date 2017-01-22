@@ -3,7 +3,8 @@
 * **Breaking change**: rename `fix` -> `pin`
 * add `unpin` method to remove pinned events
 * improve env-var boolification
-* disable pinning "error" events
+* disable "error" event pinning
+* build cleanup: babel5 -> babel6, grunt -> gulp4
 * package.json: require Node.js >= v0.5.9 for Process.send/ChildProcess.send
 * document the non-default export, IPCEventEmitter
 * more tests

@@ -60,7 +60,6 @@ export class IPCEventEmitter extends EventEmitter {
         // emit e.g. { emit: [ 'downloaded', 'http://example.com/file.txt' ] }
         //
         //     fire the emit event (e.g. `downloaded`) in the target
-
         $process.on('message', data => {
             if (data && data.type === TYPE) {
                 if (data.unpin) {

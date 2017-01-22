@@ -1,4 +1,4 @@
-import IPC, { IPCEventEmitter } from '../../../src/ipc-event-emitter'
+import IPC, { IPCEventEmitter } from '~/src/ipc-event-emitter'
 import Promise                  from 'bluebird'
 import { fork }                 from 'child_process'
 import { EventEmitter }         from 'events'

@@ -1,4 +1,4 @@
-import IPC from '../../../src/ipc-event-emitter'
+import IPC from '~/src/ipc-event-emitter'
 
 let ipc = IPC(process)
 

@@ -1,0 +1,12 @@
+{
+    "sourceMaps": "inline",
+    "presets": [
+        "es2015",
+        "stage-0"
+    ],
+    "plugins": [
+        "espower",
+        "babel-root-import",
+        "transform-runtime",
+    ]
+}
