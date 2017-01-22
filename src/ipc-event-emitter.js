@@ -1,3 +1,4 @@
+import 'source-map-support/register'
 import Promise          from 'bluebird'
 import str2bool         from 'boolify-string'
 import { EventEmitter } from 'events'

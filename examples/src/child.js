@@ -1,3 +1,4 @@
+import 'source-map-support/register'
 import IPC from '~/src/ipc-event-emitter'
 
 let ipc = IPC(process)

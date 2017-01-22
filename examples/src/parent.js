@@ -1,3 +1,4 @@
+import 'source-map-support/register'
 import { fork } from 'child_process'
 import IPC      from '~/src/ipc-event-emitter'
 
