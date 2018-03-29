@@ -8,10 +8,7 @@
     "example": "gulp --silent example"
   },
   "files": [
-    "target/src/ipc-event-emitter.js",
-    "package.json",
-    "CHANGELOG.md",
-    "README.md"
+    "target/src/ipc-event-emitter.js"
   ],
   "engines": {
     "node": ">= 0.5.9"

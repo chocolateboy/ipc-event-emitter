@@ -92,8 +92,7 @@ export class IPCEventEmitter extends EventEmitter {
     }
 
     // emit an event in the same way as `EventEmitter.emit`,
-    // but emit it in the IPC wrapper in the process at the
-    // other end of the IPC channel
+    // but emit it in the process at the other end of the IPC channel
     emit (...args) {
         return this._sendAsync({ emit: args })
     }

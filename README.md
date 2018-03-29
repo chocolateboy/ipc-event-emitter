@@ -1,14 +1,18 @@
 # ipc-event-emitter
 
-[![npm status](http://img.shields.io/npm/v/ipc-event-emitter.svg)](https://www.npmjs.org/package/ipc-event-emitter)
-[![build status](https://secure.travis-ci.org/chocolateboy/ipc-event-emitter.svg)](http://travis-ci.org/chocolateboy/ipc-event-emitter)
+[![Build Status](https://secure.travis-ci.org/chocolateboy/ipc-event-emitter.svg)](http://travis-ci.org/chocolateboy/ipc-event-emitter)
+[![NPM Version](http://img.shields.io/npm/v/ipc-event-emitter.svg)](https://www.npmjs.org/package/ipc-event-emitter)
+[![License](https://img.shields.io/badge/license-artistic-blue.svg)](https://github.com/chocolateboy/ipc-event-emitter/blob/master/LICENSE.md)
 
-An EventEmitter wrapper for IPC between parent and child processes with support for states (AKA pinned events) and logging
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [NAME](#name)
 - [INSTALLATION](#installation)
 - [USAGE](#usage)
     - [parent](#parent)
     - [child](#child)
+    - [output](#output)
 - [DESCRIPTION](#description)
 - [EXPORTS](#exports)
   - [IPC (default)](#ipc-default)
@@ -25,13 +29,19 @@ An EventEmitter wrapper for IPC between parent and child processes with support 
 - [AUTHOR](#author)
 - [COPYRIGHT AND LICENSE](#copyright-and-license)
 
-## INSTALLATION
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# NAME
+
+ipc-event-emitter - an EventEmitter wrapper for IPC between parent and child processes with support for states (AKA pinned events) and logging
+
+# INSTALLATION
 
     $ npm install ipc-event-emitter
 
-## USAGE
+# USAGE
 
-#### parent
+### parent
 
 ```javascript
 import { fork } from 'child_process'
@@ -51,7 +61,7 @@ ipc.on('pong', () => {
 })
 ```
 
-#### child
+### child
 
 ```javascript
 import IPC from 'ipc-event-emitter'
@@ -66,13 +76,13 @@ ipc.on('ping', () => {
 ipc.pin('ready')
 ```
 
-#### output
+### output
 
     got "ready", sending "ping"
     got "ping", sending "pong"
     got "pong", disconnecting
 
-## DESCRIPTION
+# DESCRIPTION
 
 This module provides an [`EventEmitter`](https://nodejs.org/api/events.html) wrapper for child/parent processes which eliminates the need to use the [`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_options_callback) and [`process.send`](https://nodejs.org/api/process.html#process_process_send_message_sendhandle_options_callback) methods for [IPC](https://en.wikipedia.org/wiki/Inter-process_communication).
 
@@ -80,9 +90,9 @@ Instead, messages are sent to the connected process via the standard `emit` meth
 
 In addition, the wrapper extends the `EventEmitter` API to include support for states i.e. "sticky" events that can be subscribed to *after* they've fired. This ensures events are safely delivered regardless of when listeners are registered, and eliminates a common source of bugs and unpredictable behaviour when coordinating communicating processes.
 
-## EXPORTS
+# EXPORTS
 
-### IPC (default)
+## IPC (default)
 
 ```javascript
 import IPC from 'ipc-event-emitter'
@@ -100,7 +110,7 @@ Events are fired remotely (i.e. in the IPC wrapper in the connected process) and
 
 Otherwise, the wrapper has the same interface and the same behaviour as its base class, [`events.EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter), apart from the differences listed [below](#methods).
 
-#### Options
+### Options
 
 The following options are available:
 
@@ -128,7 +138,7 @@ The following options are available:
 
     Note that it's up to you to perform any cleanup (e.g. disconnecting the relevant process) if a message times out.
 
-### IPCEventEmitter
+## IPCEventEmitter
 
 ```javascript
 import { EventEmitter }         from 'events'
@@ -156,9 +166,9 @@ import { IPCEventEmitter } from 'ipc-event-emitter'
 let ipc = new IPCEventEmitter(process, options)
 ```
 
-## PROPERTIES
+# PROPERTIES
 
-### process
+## process
 
 ```javascript
 let ipc = IPC(fork('./child.js'))
@@ -172,9 +182,9 @@ ipc.on('complete', () => {
 
 The process or child process supplied to the [`IPC`](#ipc-default) call.
 
-## METHODS
+# METHODS
 
-### emit
+## emit
 
 ```javascript
 ipc.emit('start')
@@ -196,7 +206,7 @@ Note that on Node.js >= v4.0.0, the promise is resolved when the message has bee
 
 The value resolved by the promise is unspecified.
 
-### pin
+## pin
 
 ```javascript
 ipc.pin('ready')
@@ -218,7 +228,7 @@ Note that the "error" event is special-cased by EventEmitter, and can't be pinne
 
 Returns a promise with the same behaviour as `emit`. As with `emit`, the value resolved by the promise is unspecified.
 
-### unpin
+## unpin
 
 ```javascript
 ipc.unpin('ready')
@@ -236,23 +246,24 @@ Unregister a "sticky" event. The behaviour prior to the pinning of the event is 
 
 Returns a promise with the same behaviour as `emit`. As with `emit`, the value resolved by the promise is unspecified.
 
-## SEE ALSO
+# SEE ALSO
 
 * [fixed-event](https://www.npmjs.com/package/fixed-event)
 * [ipcee](https://www.npmjs.com/package/ipcee)
 * [ipc-emitter](https://www.npmjs.com/package/ipc-emitter)
 * [ipc-events](https://www.npmjs.com/package/ipc-events)
 
-## VERSION
+# VERSION
 
 2.0.0
 
-## AUTHOR
+# AUTHOR
 
 [chocolateboy](mailto:chocolate@cpan.org)
 
-## COPYRIGHT AND LICENSE
+# COPYRIGHT AND LICENSE
 
-Copyright © 2015-2017 by chocolateboy
+Copyright © 2015-2017 by chocolateboy.
 
-ipc-event-emitter is free software; you can redistribute it and/or modify it under the terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
+This is free software; you can redistribute it and/or modify it under the
+terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).
