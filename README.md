@@ -262,7 +262,7 @@ Returns a promise with the same behaviour as `emit`. As with `emit`, the value r
 
 # COPYRIGHT AND LICENSE
 
-Copyright © 2015-2017 by chocolateboy.
+Copyright © 2015-2019 by chocolateboy.
 
 This is free software; you can redistribute it and/or modify it under the
 terms of the [Artistic License 2.0](http://www.opensource.org/licenses/artistic-license-2.0.php).

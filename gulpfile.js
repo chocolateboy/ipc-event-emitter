@@ -1,9 +1,9 @@
-import rm    from 'del'
-import exec  from 'execa'
-import gulp  from 'gulp'
-import babel from 'gulp-babel'
-import since from 'gulp-changed'
-import mocha from 'gulp-mocha'
+const rm    = require('del')
+const exec  = require('execa')
+const gulp  = require('gulp')
+const babel = require('gulp-babel')
+const since = require('gulp-changed')
+const mocha = require('gulp-mocha')
 
 const SRC = {
     example: 'examples/src/**/*.js',
@@ -35,7 +35,7 @@ gulp.task('mocha', () => {
 
 function runExample () {
     return exec.stdout('node', [ `./${DEST}/examples/src/parent.js` ])
-        .then(::console.log)
+        .then(msg => console.log(msg))
 }
 
 gulp.task('clean', () => rm(DEST))
