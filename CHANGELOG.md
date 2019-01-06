@@ -1,6 +1,6 @@
 **2.0.1** - TBD
 
-- update dependencies
+- update insecure dependencies
 
 **2.0.0** - 2017-01-22
 

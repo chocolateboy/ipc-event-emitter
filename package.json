@@ -1,6 +1,6 @@
 {
   "name": "ipc-event-emitter",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An EventEmitter wrapper for IPC between parent and child processes with support for states (AKA pinned events) and logging",
   "main": "target/src/ipc-event-emitter.js",
   "scripts": {
