@@ -1,4 +1,4 @@
-**2.0.1** - TBD
+**2.0.1** - 2019-01-06
 
 - update insecure dependencies
 
