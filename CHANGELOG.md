@@ -1,3 +1,7 @@
+**2.0.2** - 2019-06-19
+
+- update insecure dev dependency: WS-2018-0590
+
 **2.0.1** - 2019-01-06
 
 - update insecure dependencies

@@ -5,7 +5,7 @@ import { fork }                 from 'child_process'
 import { EventEmitter }         from 'events'
 import assert                   from 'power-assert'
 
-const ARGS  = [ 'foo', 42 ]
+const ARGS  = ['foo', 42]
 const SLEEP = 500
 const SLOW  = SLEEP * 10
 
