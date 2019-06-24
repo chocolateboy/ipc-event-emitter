@@ -88,7 +88,7 @@ ipc.pin('ready')
 
 This module provides an [`EventEmitter`](https://nodejs.org/api/events.html)
 wrapper for child/parent processes which eliminates the need to use the
-[`child_process.send`](https://nodejs.org/api/child_process.html#child_process_child_send_message_sendhandle_options_callback)
+[`child_process.send`](https://nodejs.org/api/child_process.html#child_process_subprocess_send_message_sendhandle_options_callback)
 and
 [`process.send`](https://nodejs.org/api/process.html#process_process_send_message_sendhandle_options_callback)
 methods for [IPC](https://en.wikipedia.org/wiki/Inter-process_communication).
@@ -101,7 +101,7 @@ emitter.
 In addition, the wrapper extends the `EventEmitter` API to include support for
 states i.e. "sticky" events that can be subscribed to *after* they've fired.
 This ensures events are safely delivered regardless of when listeners are
-registered, and eliminates a common source of bugs and unpredictable behaviour
+registered, and eliminates a common source of bugs and unpredictable behavior
 when coordinating communicating processes.
 
 # EXPORTS
@@ -126,7 +126,7 @@ Events are fired remotely (i.e. in the IPC wrapper in the connected process)
 and listeners are registered locally i.e. in the IPC wrapper in the current
 process.
 
-Otherwise, the wrapper has the same interface and the same behaviour as its
+Otherwise, the wrapper has the same interface and the same behavior as its
 base class, [`events.EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter),
 apart from the differences listed [below](#methods).
 
@@ -142,7 +142,7 @@ The following options are available:
 
     Enables event logging. Events are logged to the console. By default, the
     emitter is identified by the PID of its process, but this can be overridden
-    via the [`name`](#name) option.
+    via the [`name`](#options-name) option.
 
     Logging can also be enabled by setting the `IPC_EVENT_EMITTER_DEBUG` environment variable
     to a [true value](https://www.npmjs.com/package/boolify-string).
@@ -258,7 +258,7 @@ ipc.pin('ready').then(() => {
 
 A "sticky" version of [`emit`](#emit). Listeners registered before this event
 occurs are notified in the same way as `emit`. Listeners registered after this
-event are called immediately with the supplied arguments.
+event occurs are called immediately with the supplied arguments.
 
 Pinning an event makes it act like a state rather than a blink-and-you-miss-it
 notification. This is useful for states such as "ready" which are poorly
@@ -267,7 +267,7 @@ modeled by events.
 Note that the "error" event is special-cased by EventEmitter, and can't be
 pinned. Attempting to pin an event with this name will raise an error.
 
-Returns a promise with the same behaviour as `emit`. As with `emit`, the value
+Returns a promise with the same behavior as `emit`. As with `emit`, the value
 resolved by the promise is unspecified.
 
 ## unpin
@@ -284,11 +284,11 @@ ipc.unpin('ready').then(() => {
 
 **Signature**: event: string → Promise
 
-Unregister a "sticky" event. The behaviour prior to the pinning of the event is
+Unregister a "sticky" event. The behavior prior to the pinning of the event is
 restored i.e. listeners registered after an event has been unpinned will only
 be invoked if the event occurs again in the future.
 
-Returns a promise with the same behaviour as `emit`. As with `emit`, the value
+Returns a promise with the same behavior as `emit`. As with `emit`, the value
 resolved by the promise is unspecified.
 
 # SEE ALSO
